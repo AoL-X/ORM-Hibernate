@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+    <!--
+    configuration for persistence unit ===> for various implementations of JPA, such as Hibernate, Open JPA, Eclipse Link and so on. When we want to change the concrete implementation, we can just choose different persistence-unit implementation
+
+        transaction-type:
+            Option: JTA ===> distributed transaction management
+            Option: RESOURCE_LOCAL ===> local transaction management
+
+     -->
+    <persistence-unit name="hibernateJPA" transaction-type="RESOURCE_LOCAL">
+        <!-- implementation of JPA -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- specify the pojo classes that need mapping by ORM -->
+        <class>org.xlys.hd.pojo.Customer</class>
+        <class>org.xlys.hd.pojo.Account</class>
+
+        <!-- optional configuration for details of JPA implementation  -->
+        <properties>
+
+            <!-- for DB configurations -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hd?characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.user" value="hd_fid"/>
+            <property name="javax.persistence.jdbc.password" value="hd_fid_pwd123"/>
+
+            <!-- for hibernate configurations -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="apacheOpenJPA" transaction-type="RESOURCE_LOCAL">
+        <!-- implementation of JPA -->
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+        <!-- specify the pojo classes that need mapping by ORM -->
+        <class>org.xlys.hd.pojo.Customer</class>
+
+        <!-- optional configuration for details of JPA implementation  -->
+        <properties>
+
+            <!-- for DB configurations -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hd?characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.user" value="hd_fid"/>
+            <property name="javax.persistence.jdbc.password" value="hd_fid_pwd123"/>
+
+            <!-- for openjpa configurations -->
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/> <!-- auto generate DB tables -->
+            <property name="openjpa.jdbc.DBDictionary" value="mysql" />
+            <property name="openjpa.Log" value="SQL=Trace" />
+
+        </properties>
+    </persistence-unit>
+
+</persistence>

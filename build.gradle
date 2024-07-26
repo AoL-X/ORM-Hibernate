@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+}
+
+// configuration for all projects
+allprojects {
+    // config all group & version info for all projects
+    group 'org.xlys.hibernate'
+    version '1.0-SNAPSHOT'
+
+
+    // config plugins for all projects if needs
+
+    // config for character encoding set for all projects
+    tasks.withType(JavaCompile).configureEach{
+        options.encoding = "UTF-8"
+    }
+
+    // config source and compatibility for all projects
+//    java {
+//        sourceCompatibility = 1.8
+//        targetCompatibility = 1.8
+//    }
+
+    // set repo for all projects
+    repositories {
+        mavenCentral()
+    }
+
+    // define variables
+    ext {
+        lombokVersion = "1.18.30"
+    }
+
+    // set dependencies for all projects
+//    dependencies {
+//        //lombok
+//        implementation "org.projectlombok:lombok:${lombokVersion}"
+//        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+//        testImplementation "org.projectlombok:lombok:${lombokVersion}"
+//        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+//
+//        // for junit5 test
+//        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+//        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+//    }
+}
+
+// Configuration for every subprojects
+//subprojects {
+//
+//    apply plugin: 'java'
+////    apply plugin: 'java-library'
+//
+//
+//    jar {
+//        manifest.attributes provider: 'gradle'
+//    }
+//
+//    tasks.named('test') {
+//        useJUnitPlatform()
+//    }
+//}
+
+//wrapper {
+//    gradleVersion("7.4")
+//    distributionType('ALL') // [BIN/ALL]: can see the source code of gradle when pick "ALL"
+//}
+
+
+
+

@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- database configuration -->
+        <property name = "hibernate.connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
+
+        <property name = "hibernate.connection.url">
+            jdbc:mysql://localhost:3306/hd?characterEncoding=UTF-8
+        </property>
+
+        <property name = "hibernate.connection.username">
+            hd_fid
+        </property>
+
+        <property name = "hibernate.connection.password">
+            hd_fid_pwd123
+        </property>
+
+        <!-- show sql configuration -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property><!-- default to false for this property -->
+        <property name="hibernate.hbm2ddl.auto">update</property> <!-- default to none
+                option: none ===> will not generate tables according to the entities
+                option: update ===> will CHECK AND UPDATE tables if tables already existed  & generate new table for tables not existing in DB according to the entities
+                option: create ===> will create tables no matter whether the tables existed according to the entities
+         -->
+
+        <!-- database dialect -->
+        <property name = "hibernate.dialect">
+            <!--org.hibernate.dialect.MySQL5InnoDBDialect-->
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <!-- specify the Pojo entities -->
+        <mapping class="org.xlys.hd.pojo.Customer"/>
+        <mapping class="org.xlys.hd.pojo.Account"/>
+
+    </session-factory>
+</hibernate-configuration>

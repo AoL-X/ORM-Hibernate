@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.xlys.hibernate6'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    // for common module
+    implementation project(":commons")
+
+    // for JPA implementation
+    // ===> for Hibernate
+    implementation 'org.hibernate.orm:hibernate-core:6.4.9.Final' // version 6.x
+
+    // ===> for OpenJPA
+//    implementation 'org.apache.openjpa:openjpa:3.2.2'
+
+    // for MySQL DB
+    implementation 'mysql:mysql-connector-java:8.0.29'
+
+    // for tools
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // for spring integrate with QueryDSL
+    implementation 'com.querydsl:querydsl-jpa:4.4.0'
+}
+
+//test {
+//    useJUnitPlatform()
+//}

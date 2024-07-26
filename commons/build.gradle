@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'org.xlys.hibernate.common'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = "1.18.30"
+}
+
+dependencies {
+    // for jpa
+    implementation('jakarta.persistence:jakarta.persistence-api:3.1.0')
+    implementation('jakarta.activation:jakarta.activation-api:2.1.1')
+    implementation('jakarta.inject:jakarta.inject-api:2.0.1')
+    implementation('jakarta.transaction:jakarta.transaction-api:2.0.1')
+    implementation('jakarta.xml.bind:jakarta.xml.bind-api:4.0.0')
+
+    // for lombok
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // for junit test
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}

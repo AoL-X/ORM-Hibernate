@@ -1,0 +1,16 @@
+// config plugin repositories
+pluginManagement {
+    repositories {
+        // default repository
+        gradlePluginPortal()
+        // aliyun repository for gradle plugin
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+}
+
+// set projects, root dir is root project. Each module is a sub project
+rootProject.name = 'Hibernate_demo'
+include 'Hibernate6'
+include 'Hibernate5'
+include 'commons'
+
