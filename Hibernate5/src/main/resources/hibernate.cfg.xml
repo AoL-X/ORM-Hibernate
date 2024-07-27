@@ -1,6 +1,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <!DOCTYPE hibernate-configuration SYSTEM
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- Native Hibernate configuration file-->
 <hibernate-configuration>
     <session-factory>
 
@@ -33,10 +34,10 @@
         <!-- database dialect -->
         <property name = "hibernate.dialect">
             <!--org.hibernate.dialect.MySQL5InnoDBDialect-->
-            org.hibernate.dialect.MySQLDialect
+            org.hibernate.dialect.MySQL57Dialect<!-- for mysql 5.7 version-->
         </property>
 
-        <!-- specify the Pojo entities -->
+        <!-- specify the Pojo entities to replace the *.hbm.xml-->
         <mapping class="org.xlys.hd.pojo.Customer"/>
         <mapping class="org.xlys.hd.pojo.Account"/>
 

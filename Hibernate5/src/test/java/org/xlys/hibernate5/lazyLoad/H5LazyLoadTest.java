@@ -47,12 +47,14 @@ public class H5LazyLoadTest {
     }
 
     @Test
+//    @Disabled
     public void testLazyLoad() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Customer customer = session.load(Customer.class, 8);
+        Customer customer = session.load(Customer.class, 1);
+        log.info("Found customer:{}",customer);
         String logoStr = customer.getAccount().getLogo().toString();
-        log.info(logoStr);
+        log.info("size of logo:{}",logoStr.length());
         session.getTransaction().commit();
         session.close();
     }
